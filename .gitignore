@@ -3,3 +3,10 @@ build/
 lib/
 .vscode/
 test/
+.DS_Store
+.idea/
+cmake-build-debug/
+webbench-1.5/
+3rdparty/googletest/
+
+

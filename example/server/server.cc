@@ -4,7 +4,12 @@
 using namespace apollo;
 
 static std::shared_ptr<apollo::Logger> biz_logger = LOG_NAME("business");
-
+static std::string httpResponse = 
+        "HTTP/1.1 200 OK\r\n"
+        "Content-Type: text/plain\r\n"
+        "Content-Length: 5\r\n"
+        "\r\n"
+        "Hello";
 class EchoServer {
 public:
     EchoServer(EventLoop* loop, const InetAddress& addr, const std::string& name)
@@ -45,19 +50,20 @@ private:
         Buffer* buffer, Timestamp receiveTime) {
         std::string message = buffer->retrieveAllAsString();
         LOG_FMT_INFO(biz_logger, "reveive message: %s", message.c_str());
-        qps_test::EchoMessage request, response;
+        // qps_test::EchoMessage request, response;
 
-        // 解包
-        request.ParseFromString(message);
+        // // 解包
+        // request.ParseFromString(message);
 
-        response.set_id(request.id());
-        response.set_content(request.content());
+        // response.set_id(request.id());
+        // response.set_content(request.content());
 
-        // 序列化
-        std::string responseStr;
-        response.SerializeToString(&responseStr);
+        // // 序列化
+        // std::string responseStr;
+        // response.SerializeToString(&responseStr);
 
-        conn->send(responseStr);
+        // responseStr = message;
+        conn->send(httpResponse);
         // conn->shutdown();
         // LOG_INFO(biz_logger) << "close write";
     }
@@ -69,7 +75,7 @@ private:
 
 int main() {
     EventLoop   loop;
-    InetAddress addr(8000);
+    InetAddress addr(5000);
     EchoServer  server(&loop, addr, "EchoServer");
     server.start();
     loop.loop();

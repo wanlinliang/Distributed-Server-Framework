@@ -14,24 +14,26 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-
-PROTOBUF_PRAGMA_INIT_SEG
 namespace apollo {
-constexpr RpcHeader::RpcHeader(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : service_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , method_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , args_size_(0u){}
-struct RpcHeaderDefaultTypeInternal {
-  constexpr RpcHeaderDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~RpcHeaderDefaultTypeInternal() {}
-  union {
-    RpcHeader _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RpcHeaderDefaultTypeInternal _RpcHeader_default_instance_;
+class RpcHeaderDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RpcHeader> _instance;
+} _RpcHeader_default_instance_;
 }  // namespace apollo
+static void InitDefaultsscc_info_RpcHeader_rpcheader_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::apollo::_RpcHeader_default_instance_;
+    new (ptr) ::apollo::RpcHeader();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::apollo::RpcHeader::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RpcHeader_rpcheader_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RpcHeader_rpcheader_2eproto}, {}};
+
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_rpcheader_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_rpcheader_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_rpcheader_2eproto = nullptr;
@@ -59,23 +61,27 @@ const char descriptor_table_protodef_rpcheader_2eproto[] PROTOBUF_SECTION_VARIAB
   "\n\014service_name\030\001 \001(\014\022\023\n\013method_name\030\002 \001("
   "\014\022\021\n\targs_size\030\003 \001(\rb\006proto3"
   ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_rpcheader_2eproto_deps[1] = {
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpcheader_2eproto_sccs[1] = {
+  &scc_info_RpcHeader_rpcheader_2eproto.base,
+};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_rpcheader_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rpcheader_2eproto = {
-  false, false, 108, descriptor_table_protodef_rpcheader_2eproto, "rpcheader.proto", 
-  &descriptor_table_rpcheader_2eproto_once, nullptr, 0, 1,
+  false, false, descriptor_table_protodef_rpcheader_2eproto, "rpcheader.proto", 108,
+  &descriptor_table_rpcheader_2eproto_once, descriptor_table_rpcheader_2eproto_sccs, descriptor_table_rpcheader_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_rpcheader_2eproto::offsets,
-  file_level_metadata_rpcheader_2eproto, file_level_enum_descriptors_rpcheader_2eproto, file_level_service_descriptors_rpcheader_2eproto,
+  file_level_metadata_rpcheader_2eproto, 1, file_level_enum_descriptors_rpcheader_2eproto, file_level_service_descriptors_rpcheader_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_rpcheader_2eproto_getter() {
-  return &descriptor_table_rpcheader_2eproto;
-}
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_rpcheader_2eproto(&descriptor_table_rpcheader_2eproto);
+static bool dynamic_init_dummy_rpcheader_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_rpcheader_2eproto)), true);
 namespace apollo {
 
 // ===================================================================
 
+void RpcHeader::InitAsDefaultInstance() {
+}
 class RpcHeader::_Internal {
  public:
 };
@@ -91,22 +97,23 @@ RpcHeader::RpcHeader(const RpcHeader& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   service_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_service_name().empty()) {
-    service_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_service_name(), 
-      GetArenaForAllocation());
+    service_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_service_name(),
+      GetArena());
   }
   method_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_method_name().empty()) {
-    method_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_method_name(), 
-      GetArenaForAllocation());
+    method_name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_method_name(),
+      GetArena());
   }
   args_size_ = from.args_size_;
   // @@protoc_insertion_point(copy_constructor:apollo.RpcHeader)
 }
 
 void RpcHeader::SharedCtor() {
-service_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-method_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-args_size_ = 0u;
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RpcHeader_rpcheader_2eproto.base);
+  service_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  method_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  args_size_ = 0u;
 }
 
 RpcHeader::~RpcHeader() {
@@ -116,7 +123,7 @@ RpcHeader::~RpcHeader() {
 }
 
 void RpcHeader::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArena() == nullptr);
   service_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   method_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -130,6 +137,11 @@ void RpcHeader::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void RpcHeader::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const RpcHeader& RpcHeader::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RpcHeader_rpcheader_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void RpcHeader::Clear() {
 // @@protoc_insertion_point(message_clear_start:apollo.RpcHeader)
@@ -137,17 +149,19 @@ void RpcHeader::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  service_name_.ClearToEmpty();
-  method_name_.ClearToEmpty();
+  service_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  method_name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   args_size_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* RpcHeader::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // bytes service_name = 1;
       case 1:
@@ -174,8 +188,7 @@ const char* RpcHeader::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -202,13 +215,13 @@ failure:
   (void) cached_has_bits;
 
   // bytes service_name = 1;
-  if (!this->service_name().empty()) {
+  if (this->service_name().size() > 0) {
     target = stream->WriteBytesMaybeAliased(
         1, this->_internal_service_name(), target);
   }
 
   // bytes method_name = 2;
-  if (!this->method_name().empty()) {
+  if (this->method_name().size() > 0) {
     target = stream->WriteBytesMaybeAliased(
         2, this->_internal_method_name(), target);
   }
@@ -236,14 +249,14 @@ size_t RpcHeader::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // bytes service_name = 1;
-  if (!this->service_name().empty()) {
+  if (this->service_name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_service_name());
   }
 
   // bytes method_name = 2;
-  if (!this->method_name().empty()) {
+  if (this->method_name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_method_name());
@@ -287,10 +300,10 @@ void RpcHeader::MergeFrom(const RpcHeader& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from.service_name().empty()) {
+  if (from.service_name().size() > 0) {
     _internal_set_service_name(from._internal_service_name());
   }
-  if (!from.method_name().empty()) {
+  if (from.method_name().size() > 0) {
     _internal_set_method_name(from._internal_method_name());
   }
   if (from.args_size() != 0) {
@@ -318,25 +331,16 @@ bool RpcHeader::IsInitialized() const {
 
 void RpcHeader::InternalSwap(RpcHeader* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &service_name_, GetArenaForAllocation(),
-      &other->service_name_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &method_name_, GetArenaForAllocation(),
-      &other->method_name_, other->GetArenaForAllocation()
-  );
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  service_name_.Swap(&other->service_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  method_name_.Swap(&other->method_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(args_size_, other->args_size_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RpcHeader::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_rpcheader_2eproto_getter, &descriptor_table_rpcheader_2eproto_once,
-      file_level_metadata_rpcheader_2eproto[0]);
+  return GetMetadataStatic();
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace apollo

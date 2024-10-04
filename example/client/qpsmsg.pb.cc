@@ -14,23 +14,26 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-
-PROTOBUF_PRAGMA_INIT_SEG
 namespace qps_test {
-constexpr EchoMessage::EchoMessage(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : content_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , id_(0u){}
-struct EchoMessageDefaultTypeInternal {
-  constexpr EchoMessageDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~EchoMessageDefaultTypeInternal() {}
-  union {
-    EchoMessage _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT EchoMessageDefaultTypeInternal _EchoMessage_default_instance_;
+class EchoMessageDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<EchoMessage> _instance;
+} _EchoMessage_default_instance_;
 }  // namespace qps_test
+static void InitDefaultsscc_info_EchoMessage_qpsmsg_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::qps_test::_EchoMessage_default_instance_;
+    new (ptr) ::qps_test::EchoMessage();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::qps_test::EchoMessage::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_EchoMessage_qpsmsg_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_EchoMessage_qpsmsg_2eproto}, {}};
+
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_qpsmsg_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_qpsmsg_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_qpsmsg_2eproto = nullptr;
@@ -56,23 +59,27 @@ const char descriptor_table_protodef_qpsmsg_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "\n\014qpsmsg.proto\022\010qps_test\"*\n\013EchoMessage\022"
   "\017\n\007content\030\001 \001(\014\022\n\n\002id\030\002 \001(\rb\006proto3"
   ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_qpsmsg_2eproto_deps[1] = {
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_qpsmsg_2eproto_sccs[1] = {
+  &scc_info_EchoMessage_qpsmsg_2eproto.base,
+};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_qpsmsg_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_qpsmsg_2eproto = {
-  false, false, 76, descriptor_table_protodef_qpsmsg_2eproto, "qpsmsg.proto", 
-  &descriptor_table_qpsmsg_2eproto_once, nullptr, 0, 1,
+  false, false, descriptor_table_protodef_qpsmsg_2eproto, "qpsmsg.proto", 76,
+  &descriptor_table_qpsmsg_2eproto_once, descriptor_table_qpsmsg_2eproto_sccs, descriptor_table_qpsmsg_2eproto_deps, 1, 0,
   schemas, file_default_instances, TableStruct_qpsmsg_2eproto::offsets,
-  file_level_metadata_qpsmsg_2eproto, file_level_enum_descriptors_qpsmsg_2eproto, file_level_service_descriptors_qpsmsg_2eproto,
+  file_level_metadata_qpsmsg_2eproto, 1, file_level_enum_descriptors_qpsmsg_2eproto, file_level_service_descriptors_qpsmsg_2eproto,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_qpsmsg_2eproto_getter() {
-  return &descriptor_table_qpsmsg_2eproto;
-}
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_qpsmsg_2eproto(&descriptor_table_qpsmsg_2eproto);
+static bool dynamic_init_dummy_qpsmsg_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_qpsmsg_2eproto)), true);
 namespace qps_test {
 
 // ===================================================================
 
+void EchoMessage::InitAsDefaultInstance() {
+}
 class EchoMessage::_Internal {
  public:
 };
@@ -88,16 +95,17 @@ EchoMessage::EchoMessage(const EchoMessage& from)
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   content_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_content().empty()) {
-    content_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_content(), 
-      GetArenaForAllocation());
+    content_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_content(),
+      GetArena());
   }
   id_ = from.id_;
   // @@protoc_insertion_point(copy_constructor:qps_test.EchoMessage)
 }
 
 void EchoMessage::SharedCtor() {
-content_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-id_ = 0u;
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_EchoMessage_qpsmsg_2eproto.base);
+  content_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  id_ = 0u;
 }
 
 EchoMessage::~EchoMessage() {
@@ -107,7 +115,7 @@ EchoMessage::~EchoMessage() {
 }
 
 void EchoMessage::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArena() == nullptr);
   content_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
@@ -120,6 +128,11 @@ void EchoMessage::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void EchoMessage::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
+const EchoMessage& EchoMessage::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_EchoMessage_qpsmsg_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void EchoMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:qps_test.EchoMessage)
@@ -127,16 +140,18 @@ void EchoMessage::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  content_.ClearToEmpty();
+  content_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   id_ = 0u;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* EchoMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // bytes content = 1;
       case 1:
@@ -155,8 +170,7 @@ const char* EchoMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
         continue;
       default: {
       handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -183,7 +197,7 @@ failure:
   (void) cached_has_bits;
 
   // bytes content = 1;
-  if (!this->content().empty()) {
+  if (this->content().size() > 0) {
     target = stream->WriteBytesMaybeAliased(
         1, this->_internal_content(), target);
   }
@@ -211,7 +225,7 @@ size_t EchoMessage::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // bytes content = 1;
-  if (!this->content().empty()) {
+  if (this->content().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_content());
@@ -255,7 +269,7 @@ void EchoMessage::MergeFrom(const EchoMessage& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from.content().empty()) {
+  if (from.content().size() > 0) {
     _internal_set_content(from._internal_content());
   }
   if (from.id() != 0) {
@@ -283,20 +297,15 @@ bool EchoMessage::IsInitialized() const {
 
 void EchoMessage::InternalSwap(EchoMessage* other) {
   using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &content_, GetArenaForAllocation(),
-      &other->content_, other->GetArenaForAllocation()
-  );
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  content_.Swap(&other->content_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(id_, other->id_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata EchoMessage::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_qpsmsg_2eproto_getter, &descriptor_table_qpsmsg_2eproto_once,
-      file_level_metadata_qpsmsg_2eproto[0]);
+  return GetMetadataStatic();
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace qps_test

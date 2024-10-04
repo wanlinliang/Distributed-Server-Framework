@@ -11,7 +11,7 @@ namespace apollo {
  */
 class InetAddress {
 public:
-    explicit InetAddress(uint16_t port = 0, const std::string& ip = "127.0.0.1");
+    explicit InetAddress(uint16_t port = 0, const std::string& ip = "0.0.0.0");
 
     explicit InetAddress(const sockaddr_in& addr)
         : addr_(addr) { }

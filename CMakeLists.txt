@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(apollo CXX)
-
+enable_testing()
+include(GoogleTest)
 # 生成compile_commadns.json文件
 set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 
@@ -17,7 +18,7 @@ if(APLUSEPOLL)
 endif()
 
 # 设置语言标准
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 # 生成Debug版本
 set(CMAKE_BUILD_TYPE "Debug")
@@ -59,3 +60,17 @@ add_subdirectory(apollo)
 if(APOLLO_BUILD_EXAMPLE)
     add_subdirectory(example)
 endif()
+
+# ====================
+# Google Test Integration
+# ====================
+
+# Download and add Google Test
+# Optionally, disable building samples and tests for Google Test itself
+set(GOOGLETEST_DIR ${CMAKE_SOURCE_DIR}/3rdparty/googletest)
+
+# Add Google Test subdirectory
+add_subdirectory(${GOOGLETEST_DIR})
+
+# Create an executable for your tests
+add_subdirectory(test)
