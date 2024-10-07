@@ -4,7 +4,10 @@
 #include "rpcheader.pb.h"
 #include "tcpserver.h"
 #include "zkclient.h"
+#include "etcd_rpcobserver.h"
+
 #include <google/protobuf/descriptor.h>
+
 using namespace apollo;
 using namespace google::protobuf;
 
@@ -37,6 +40,20 @@ void RpcProvider::notifyService(Service* service) {
     LOG_FMT_INFO(g_rpclogger, "publish servic: [%s][%d]", serviceName.c_str(), methondCnt);
 }
 
+void RpcProvider::deleteServiceMethod(const std::string& serviceName, const std::string& methodName) {
+    std::string method_path = "/" + serviceName + "/" + methodName;
+    rpcObserver_->deleteData(method_path);
+    auto serviceMapIter =  serviceMap_.find(serviceName);
+    if (serviceMapIter == serviceMap_.end()) {
+        return;
+    }
+    auto methodMapIter = serviceMapIter->second.methodMap.find(methodName);
+    if (methodMapIter == serviceMapIter->second.methodMap.end()) {
+        return;
+    }
+    serviceMapIter->second.methodMap.erase(methodMapIter);
+}
+
 void RpcProvider::run() {
     auto        rpcNode = ConfigParser::getInstance()->rpcNodeConfig();
     InetAddress localAddr(rpcNode.port, rpcNode.ip);
@@ -52,13 +69,17 @@ void RpcProvider::run() {
 
     server.setThreadNum(rpcNode.threadNum);
 
-    ZkClient zkCli;
-    zkCli.start();
+    auto etcdConfig = ConfigParser::getInstance()->getEtcdConfig();
+
+    InetAddress etcdAddress(etcdConfig.port, etcdConfig.ip);
+
+    rpcObserver_ = std::make_unique<EtcdRpcObserver>(etcdAddress);
+    rpcObserver_->start();
 
     // 将当前RPC节点上要发布的服务全部注册到zookeeper中 让RpcClient可以在zookeeper上发现服务
     for (auto& service : serviceMap_) {
         std::string service_path = "/" + service.first;
-        zkCli.create(service_path, "", 0);
+        rpcObserver_->createData(service_path, "");
         for (auto& method : service.second.methodMap) {
             std::string method_path = service_path + "/" + method.first;
 
@@ -66,7 +87,7 @@ void RpcProvider::run() {
             sprintf(method_data, "%s:%d", rpcNode.ip.c_str(), rpcNode.port);
 
             // 创建临时性节点
-            zkCli.create(method_path.c_str(), method_data, ZOO_EPHEMERAL);
+            rpcObserver_->createData(method_path.c_str(), method_data);
         }
     }
 

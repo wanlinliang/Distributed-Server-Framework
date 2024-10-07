@@ -2,6 +2,7 @@
 #define __APOLLO_RPCPROVIDER_H__
 
 #include "callbacks.h"
+#include "rpcobserver.h"
 #include <google/protobuf/service.h>
 #include <memory>
 #include <unordered_map>
@@ -27,6 +28,13 @@ public:
      * @param service RPC服务对象
      */
     void notifyService(google::protobuf::Service* service);
+
+    /**
+     * @brief 发布RPC方法
+     *
+     * @param service RPC服务对象
+     */
+    void deleteServiceMethod(const std::string& serviceName, const std::string& methodName);
 
     /**
      * @brief 启动RPC服务，开始提供RPC远程网络调用服务
@@ -58,7 +66,7 @@ private:
 
 private:
     std::unique_ptr<EventLoop> loop_; // 事件循环
-
+    std::unique_ptr<RpcObserver> rpcObserver_;
     using MethodMap = std::unordered_map<std::string, const google::protobuf::MethodDescriptor*>;
 
     /**

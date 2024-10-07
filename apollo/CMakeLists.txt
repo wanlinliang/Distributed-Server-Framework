@@ -5,7 +5,7 @@ aux_source_directory(./net NET_LIST)
 aux_source_directory(./rpc RPC_LIST)
 
 add_library(apollo SHARED ${SRC_LIST} ${MEMPOOL_LIST} ${LOG_LIST} ${NET_LIST} ${RPC_LIST})
-target_link_libraries(apollo pthread ${Protobuf_LIBRARIES} ${ZK_LIBRARY})
+target_link_libraries(apollo pthread ${Protobuf_LIBRARIES} ${ZK_LIBRARY} etcd-cpp-api)
 
 set(HEADERS
   ./include/common.h
@@ -42,6 +42,8 @@ set(HEADERS
   ./include/rpc/rpcheader.pb.h
   ./include/rpc/rpcprovider.h
   ./include/rpc/zkclient.h
+  ./include/rpc/rpcobserver.h
+  ./include/rpc/etcd_rpcobserver.h
   ./include/mempool/centralcache.h
   ./include/mempool/pagecache.h
   ./include/mempool/radixtree.h

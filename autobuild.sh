@@ -21,5 +21,5 @@ if [ ! -d "$LIB_DIR" ];then
 fi
 
 cd $BUILD_DIR &&
-  cmake -DCMAKE_PREFIX_PATH=/usr/local/protobuf -DCMAKE_INSTALL_PREFIX=/usr/local/apollo .. &&
+  cmake -DCMAKE_PREFIX_PATH=/usr/local/protobuf -DCMAKE_INSTALL_PREFIX=/usr/local/apollo .. && make -j$(nproc) &&
   make install

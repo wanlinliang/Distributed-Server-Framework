@@ -76,6 +76,17 @@ public:
         std::string ip;   // IP地址
         uint16_t    port; // 端口号
     };
+    /**
+     * @brief ETCD配置信息
+     */
+    struct ETCDConfig {
+        ETCDConfig() { }
+        ETCDConfig(uint16_t p, const std::string& s = "127.0.0.1")
+            : ip(s)
+            , port(p) { }
+        std::string ip;   // IP地址
+        uint16_t    port; // 端口号
+    };
 
     /**
      * @brief 数据库类型
@@ -140,6 +151,12 @@ public:
      * @return const ZookeeperConfig 
      */
     const ZookeeperConfig zookeeperConfig() const { return zkConfig_; }
+    /**
+     * @brief 获取ETCD配置信息
+     *
+     * @return const ZookeeperConfig
+     */
+    const ETCDConfig getEtcdConfig() const { return etcdConfig_; }
 
     /**
      * @brief 获取数据库配置信息
@@ -172,6 +189,7 @@ private:
 
     RpcNodeConfig   rpcConfig_; // RPC节点配置信息
     ZookeeperConfig zkConfig_;  // ZooKeeper配置信息
+    ETCDConfig etcdConfig_;
 
     std::vector<DatabaseConfig> dbConfig_; // 数据库配置
 };

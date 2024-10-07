@@ -3,6 +3,7 @@
 #include "log.h"
 #include "rpcheader.pb.h"
 #include "zkclient.h"
+#include "etcd_rpcobserver.h"
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/message.h>
 #include <unistd.h>
@@ -65,11 +66,15 @@ void RpcChannelImpl::CallMethod(
         return;
     }
 
-    // 在zookeeper上查询所需服务的主机IP和端口号
-    ZkClient zkCli;
-    zkCli.start();
+    // 在ETCD上查询所需服务的主机IP和端口号
+    auto etcdConfig = ConfigParser::getInstance()->getEtcdConfig();
+    InetAddress etcdAddress(etcdConfig.port, etcdConfig.ip);
+
+    auto rpcObserver_ = std::make_unique<EtcdRpcObserver>(etcdAddress);
+    rpcObserver_->start();
+
     std::string method_path = "/" + serviceName + "/" + methodName;
-    std::string hostData    = zkCli.getData(method_path);
+    std::string hostData    = rpcObserver_->getData(method_path);
     if (hostData == "") {
         controller->SetFailed(method_path + " is not exist");
         return;

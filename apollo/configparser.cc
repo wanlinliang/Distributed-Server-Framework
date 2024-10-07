@@ -65,6 +65,13 @@ bool ConfigParser::parse(const std::string& path) {
     } else {
         return false;
     }
+    // 解析ETCD配置
+    if (js.find("etcd") != js.end()) {
+        js["etcd"].at("ip").get_to(etcdConfig_.ip);
+        js["etcd"].at("port").get_to(etcdConfig_.port);
+    } else {
+        return false;
+    }
 
     // 解析数据库配置
     if (js.find("database") != js.end()) {
